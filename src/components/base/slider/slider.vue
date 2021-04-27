@@ -2,8 +2,9 @@
   <div class="slider" ref="rootRef">
     <div class="slider-group">
       <div class="slider-page" v-for="item in sliders" :key='item.id'>
-        <a :href="item.link">
+        <a :href="item.link" >
           <img :src="item.pic">
+          <!-- hello -->
         </a>
       </div>
     </div>
@@ -51,6 +52,7 @@ export default {
         a {
           display: block;
           width: 100%;
+          // color: #fff;
         }
         img {
           display: block;
