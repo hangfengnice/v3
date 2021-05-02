@@ -79,6 +79,7 @@ export default {
 }
 .recommend-content {
   height: 100%;
+  overflow: hidden;
 }
 .recommend-list {
   .list-title {

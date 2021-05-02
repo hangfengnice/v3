@@ -1,6 +1,7 @@
 import { ref, watch, computed, nextTick } from 'vue'
 
 export default function useFixed (props) {
+  const TITLE_HEIGHT = 30
   const groupRef = ref(null)
   const listHeights = ref([])
   const scrollY = ref(0)
@@ -15,12 +16,27 @@ export default function useFixed (props) {
     return currentGroup ? currentGroup.title : ''
   })
 
-  watch(() => props.data, async () => {
-    await nextTick()
-    calculate()
+  const fixedStyle = computed(() => {
+    const distanceVal = distance.value
+    const diff =
+      (distanceVal > 0 && distanceVal < TITLE_HEIGHT)
+        ? distanceVal - TITLE_HEIGHT
+        : 0
+
+    return {
+      transform: `translate3d(0, ${diff}px, 0)`
+    }
   })
 
-  watch(scrollY, (newY) => {
+  watch(
+    () => props.data,
+    async () => {
+      await nextTick()
+      calculate()
+    }
+  )
+
+  watch(scrollY, newY => {
     const listHeightsVal = listHeights.value
     for (let i = 0; i < listHeightsVal.length - 1; i++) {
       const heightTop = listHeightsVal[i]
@@ -28,6 +44,7 @@ export default function useFixed (props) {
 
       if (newY >= heightTop && newY <= heightBottom) {
         currentIndex.value = i
+        distance.value = heightBottom - newY
       }
     }
   })
@@ -49,5 +66,5 @@ export default function useFixed (props) {
   function onScroll (pos) {
     scrollY.value = -pos.y
   }
-  return { groupRef, onScroll, fixedTitle }
+  return { groupRef, onScroll, fixedTitle, fixedStyle }
 }
