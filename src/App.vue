@@ -3,6 +3,7 @@
   <tab></tab>
   <Player></Player>
   <router-view/>
+
 </template>
 
 <script>

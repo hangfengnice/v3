@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+// import App from './App.vue'
+// import Vue3 from './Vue3.vue'
 import router from './router'
 import store from './store'
 import lazyPlugin from 'vue3-lazy'
@@ -7,7 +8,9 @@ import loadingDirective from '@/components/base/loading/directive'
 import noresultDirective from '@/components/base/no-result/directive'
 
 import '@/assets/scss/index.scss'
-createApp(App)
+createApp({
+  template: 'helo'
+})
   .use(store)
   .use(router)
   .use(lazyPlugin, {
