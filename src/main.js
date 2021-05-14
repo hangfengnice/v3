@@ -9,7 +9,7 @@ import noresultDirective from '@/components/base/no-result/directive'
 
 import '@/assets/scss/index.scss'
 createApp({
-  template: 'helo'
+  template: '<div>hello</div>'
 })
   .use(store)
   .use(router)
