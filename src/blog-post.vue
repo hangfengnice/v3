@@ -19,11 +19,10 @@ export default {
     },
     sex: {
       type: String
+    },
+    great: {
+      type: Boolean
     }
   }
 }
 </script>
-
-<style>
-
-</style>
