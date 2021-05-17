@@ -1,17 +1,23 @@
 <template>
   <button @click="plus">
     {{count}}
+    <blog-post title="v3 publish" author='yyx' :sex='sex' />
   </button>
 </template>
 
 <script>
 import { onMounted, reactive, watch } from 'vue'
+import BlogPost from './blog-post'
 
 export default {
   name: 'vue2-app',
+  components: {
+    BlogPost
+  },
   data () {
     return {
-      $data1: 1
+      $data1: 1,
+      sex: 'man'
     }
   },
   created () {
