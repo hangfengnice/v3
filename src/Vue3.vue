@@ -3,6 +3,9 @@
     {{count}}
     <blog-post title="v3 publish" author='yyx' :sex='sex' />
   </button>
+   <teleport to="body">
+     name hf
+  </teleport>
 </template>
 
 <script>
