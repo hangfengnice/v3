@@ -1,30 +1,36 @@
 <template>
-  <button @click="plus">
-    {{count}}
-    <blog-post title="v3 publish" author='yyx' :sex='sex' />
-  </button>
-   <teleport to="body">
-     name hf
-  </teleport>
+  <keep-alive>
+    <BlogPost v-if="flag"></BlogPost>
+    <Childa v-else></Childa>
+  </keep-alive>
+  <button @click="onToggle">toggle</button>
 </template>
 
 <script>
 import { onMounted, reactive, watch } from 'vue'
 import BlogPost from './blog-post'
+import Childa from './childa.vue'
 
 export default {
   name: 'vue2-app',
   components: {
-    BlogPost
+    BlogPost,
+    Childa
   },
   data () {
     return {
       $data1: 1,
-      sex: 'man'
+      sex: 'man',
+      flag: true
     }
   },
   created () {
     this.$name = 'name'
+  },
+  methods: {
+    onToggle () {
+      this.flag = !this.flag
+    }
   },
   setup () {
     const state = reactive({ count: 0 })
